@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { PokemonService } from './services/pokemon.service';
 import { Pokemon } from './models/pokemon.type';
+import { Observable } from 'rxjs';
 
 @Component({
     selector: 'app-root',
@@ -8,15 +9,11 @@ import { Pokemon } from './models/pokemon.type';
     styleUrls: ['./app.component.css'],
 })
 export class AppComponent implements OnInit {
-    pokemons!: Pokemon[];
-    pokemonsLength!: number;
+    pokemons$!: Observable<Pokemon[]>;
 
     constructor(private pokemonService: PokemonService) {}
 
     ngOnInit(): void {
-        this.pokemonService.getPokemons(3).subscribe((pokemons: Pokemon[]) => {
-            this.pokemons = pokemons;
-            this.pokemonsLength = this.pokemons.length;
-        });
+        this.pokemons$ = this.pokemonService.getPokemons(3);
     }
 }

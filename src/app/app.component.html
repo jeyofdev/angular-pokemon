@@ -1,5 +1,6 @@
-<ng-container *ngIf="pokemonsLength">
-    <div *ngFor="let pokemon of pokemons">
+<ng-container *ngFor="let pokemon of pokemons$ | async">
+    <div>
         <p>{{ pokemon?.name }}</p>
+        <img [src]="pokemon.url" alt="" />
     </div>
 </ng-container>
