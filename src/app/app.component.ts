@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { PokemonService } from './services/pokemon.service';
-import { Pokemon } from './models/pokemon.type';
+import { DetailsPokemon, Pokemon } from './models/pokemon.type';
 import { Observable } from 'rxjs';
 
 @Component({
@@ -9,7 +9,7 @@ import { Observable } from 'rxjs';
     styleUrls: ['./app.component.css'],
 })
 export class AppComponent implements OnInit {
-    pokemons$!: Observable<Pokemon[]>;
+    pokemons$!: Observable<DetailsPokemon[]>;
 
     constructor(private pokemonService: PokemonService) {}
 
